@@ -112,10 +112,12 @@ Access the logged in user profile using the `user` object.
 
 **From controllers, services, etc.**
 
-To access the logged in user from your controllers, services, etc., use the `current` property on the `user` service like this:
+To access the logged in user from your controllers, services, etc., inject the `user` service and use the `current` property like this:
 
 ```javascript
-var currentUser = user.current;
+var myCtrl = controllers.controller("myCtrl", function($scope, user){
+    var currentUser = user.current;
+});
 ```
 
 You can also use a promise to ensure that the user is loaded when accessing it, as the user might not have been loaded when your component loads. However, the user will always be loaded when your controller loads (see requirements for ui-router below).
